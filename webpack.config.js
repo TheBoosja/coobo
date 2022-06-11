@@ -1,6 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const config = {
   mode: "development",
@@ -15,9 +13,6 @@ const config = {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        options: {
-          plugins: ["react-refresh/babel"],
-        },
       },
       {
         test: /\.tsx?$/,
@@ -42,26 +37,7 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  devtool: "inline-source-map",
-  devServer: {
-    port: "3000",
-    server: {
-      type: "https",
-    },
-    // historyApiFallback: true,
-    client: {
-      logging: "info",
-      overlay: false,
-    },
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "public/index.html",
-      hash: true,
-      filename: "index.html",
-    }),
-    new ReactRefreshWebpackPlugin(),
-  ],
+  devtool: "source-map",
 };
 
 module.exports = config;

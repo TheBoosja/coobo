@@ -23,5 +23,18 @@ module.exports = {
         }
       );
     }),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "bg-striped": (value) => ({
+            background: `repeating-linear-gradient(-45deg, ${value}, ${value} 10px, shade(${value}, 10%) 10px, shade(${value}, 10%) 20px, ${value} 20px) top left`,
+          }),
+        },
+        {
+          values: flattenColorPalette(theme("colors")),
+          type: ["color", "any"],
+        }
+      );
+    }),
   ],
 };

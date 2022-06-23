@@ -12,7 +12,13 @@ module.exports = {
   ],
   framework: "@storybook/react",
   core: {
-    builder: "@storybook/builder-webpack5",
+    builder: {
+      name: "@storybook/builder-webpack5",
+      options: {
+        lazyCompilations: true,
+        fsCache: true,
+      }
+    },
   },
   webpackFinal: async (config) => {
     config.module.rules.push({
